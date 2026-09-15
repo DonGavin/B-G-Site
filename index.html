@@ -13,6 +13,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Keep the internship feature centered even when only index.html is updated. */
     .intern-feature {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -159,6 +160,7 @@
     }
   </style>
   <style>
+    /* Sponsor cards only; the rest of the page keeps its original styling. */
     .sponsor-section {
       padding: clamp(80px, 9vw, 120px) 0;
       border-top: 2px solid var(--green);
@@ -205,10 +207,58 @@
     @media (prefers-reduced-motion: reduce) { .sponsor-item { transition: none; } }
   </style>
   <style>
+    /* Show the complete wide Greatest Hits artwork without cropping or stretching it. */
     .hits-card .feature-image { background: var(--blue); }
     .hits-card .feature-image img {
       object-fit: contain;
       object-position: center;
+    }
+  </style>
+  <style>
+    /* Present the transparent Klean Studios mark clearly within its support card. */
+    .klean-logo-panel {
+      display: grid;
+      place-items: center;
+      min-height: 200px;
+      padding: 28px;
+      border-bottom: 2px solid var(--green-dark);
+      background: var(--mustard);
+    }
+    .klean-logo-panel img {
+      display: block;
+      width: min(72%, 230px);
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+      filter: drop-shadow(4px 5px 0 rgba(6, 43, 23, .18));
+    }
+    @media (max-width: 620px) {
+      .klean-logo-panel { min-height: 170px; padding: 24px; }
+      .klean-logo-panel img { width: min(68%, 190px); max-height: 160px; }
+    }
+  </style>
+  <style>
+    /* Layer the sold-out flyer over the event photo while leaving the photo visible. */
+    .live-card .sold-out-flyer {
+      position: absolute;
+      top: 50%;
+      left: 4%;
+      z-index: 2;
+      width: 31%;
+      max-width: 220px;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      border: 2px solid var(--paper);
+      box-shadow: 7px 8px 0 rgba(6, 43, 23, .45);
+      transform: translateY(-50%) rotate(-3deg);
+    }
+    @media (max-width: 620px) {
+      .live-card .sold-out-flyer {
+        left: 3%;
+        width: 30%;
+        box-shadow: 4px 5px 0 rgba(6, 43, 23, .45);
+      }
     }
   </style>
 </head>
@@ -373,9 +423,9 @@
           <p class="about-lede">Biscuits and Gravy is a weekly variety show centered around music, featuring a special guest and a live performance in every episode.</p>
           <p>B&amp;G lives in the middle ground between a podcast and a late-night talk show—mixing in-depth conversation with live performances, comedy, and the people making cool things happen across the Southwestern Virginia region.</p>
           <div class="about-stats" aria-label="Show facts">
-            <div><strong>5</strong><span>Seasons</span></div>
-            <div><strong>71</strong><span>Episode Count</span></div>
-            <div><strong>+10,000</strong><span>Viewer Watch Time Hours</span></div>
+            <div><strong>70</strong><span>episodes and counting</span></div>
+            <div><strong>VA</strong><span>made in Roanoke</span></div>
+            <div><strong>1</strong><span>mission: make it happen</span></div>
           </div>
         </div>
       </div>
@@ -388,7 +438,10 @@
       </div>
       <div class="feature-grid section">
         <article class="feature-card live-card">
-          <div class="feature-image"><img src="assets/images/Episode 50(live show) - At The Spot On Kirk (1).JPEG" alt="The Biscuits and Gravy crew and performers at their first public show at The Spot on Kirk" width="1339" height="575" loading="lazy"></div>
+          <div class="feature-image">
+            <img src="assets/images/Episode 50(live show) - At The Spot On Kirk (1).JPEG" alt="The Biscuits and Gravy crew and performers at their first public show at The Spot on Kirk" width="1339" height="575" loading="lazy">
+            <img class="sold-out-flyer" src="assets/images/B%26G%20Event(SOLD%20OUT)%20(1).jpg" alt="Sold-out flyer for the Biscuits and Gravy live musical event" width="1354" height="2048" loading="lazy">
+          </div>
           <div class="feature-copy"><span>May 23, 2025 · The Spot on Kirk</span><h3>The first public show sold out.</h3><p>More than 130 people packed downtown Roanoke for episode 50—a five-act live musical event with crowd segments, giveaways, and the kind of energy you cannot fake.</p></div>
         </article>
         <article class="feature-card hits-card">
@@ -402,7 +455,7 @@
       <div class="section">
         <div class="section-heading crew-heading">
           <div><span class="kicker">Behind every plate</span><h2>Meet the crew.</h2></div>
-          <p>The hosts, producers, and creative hands keeping B&amp;G moving.</p>
+          <p>The hosts, cameras, producers, and creative hands keeping B&amp;G moving.</p>
         </div>
         <div class="crew-list">
           <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/eric-reynolds.jpg" alt="Crew image for Eric Reynolds" width="495" height="618" loading="lazy"><span class="crew-number">01</span></div><div class="crew-details"><h3>Eric Reynolds</h3><p>Founder &amp; Host</p></div></article>
@@ -425,7 +478,7 @@
         <div class="support-grid">
           <article class="support-card star-builder-card">
             <a class="support-image" href="assets/originals/The%20Star%20Builder%20Program%20Description.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full Star Builder Program description">
-              <img src="assets/images/star-builder-program.png" alt="The Star Builder Program by Klean Studios LLC internship program description" width="1545" height="2000" loading="lazy">
+              <img src="assets/images/Intern-Collage.jpg" alt="The Star Builder Program interns: Jaden, Bri, Gavin, and Hollie" width="1178" height="1469" loading="lazy">
             </a>
             <div class="support-copy">
               <span class="kicker">Professional development</span>
@@ -436,7 +489,9 @@
           </article>
 
           <a class="support-card klean-card" href="https://www.kleanstudios.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the Klean Studios LLC website">
-            <div class="klean-mark" aria-hidden="true"><span>K</span><span>S</span></div>
+            <div class="klean-logo-panel">
+              <img src="assets/images/klean-studios-logo.png" alt="Klean Studios LLC" width="1635" height="1367" loading="lazy">
+            </div>
             <div class="support-copy">
               <span class="kicker">Klean Studios LLC</span>
               <h3>A studio—and a team—behind the show.</h3>

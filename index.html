@@ -160,6 +160,112 @@
     }
   </style>
   <style>
+    /* Dedicated Scratch Biscuit feature. */
+    .scratch-section {
+      padding: clamp(80px, 9vw, 120px) 0;
+      border-top: 2px solid var(--green-dark);
+      background: var(--cream);
+      color: var(--green-dark);
+    }
+    .scratch-feature {
+      display: grid;
+      grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+      overflow: hidden;
+      border: 2px solid var(--green-dark);
+      background: var(--paper);
+      box-shadow: 10px 10px 0 var(--mustard);
+    }
+    .scratch-logo-panel {
+      display: grid;
+      min-height: 360px;
+      place-items: center;
+      padding: clamp(34px, 5vw, 68px);
+      border-right: 2px solid var(--green-dark);
+      background: var(--mustard);
+    }
+    .scratch-logo-panel img {
+      display: block;
+      width: min(100%, 420px);
+      height: auto;
+      max-height: 240px;
+      object-fit: contain;
+      filter: drop-shadow(5px 6px 0 rgba(6, 43, 23, .16));
+    }
+    .scratch-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 6vw, 80px);
+    }
+    .scratch-copy .kicker {
+      align-self: flex-start;
+      color: var(--blue);
+    }
+    .official-sponsor-badge {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 14px;
+      padding: 9px 13px;
+      border: 2px solid var(--green-dark);
+      background: var(--mustard);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--orange);
+    }
+    .official-sponsor-badge::before {
+      content: '★';
+      font-size: 14px;
+      line-height: 1;
+    }
+    .scratch-copy h2 {
+      margin: 14px 0 20px;
+      color: var(--green-dark);
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 6vw, 78px);
+      font-style: italic;
+      letter-spacing: -.055em;
+      line-height: .95;
+    }
+    .scratch-copy p {
+      max-width: 610px;
+      margin: 0 0 30px;
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.65;
+    }
+    .scratch-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border: 2px solid var(--green-dark);
+      background: var(--green-dark);
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      box-shadow: 5px 5px 0 var(--orange);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .scratch-link:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--orange);
+    }
+    @media (max-width: 760px) {
+      .scratch-feature { grid-template-columns: 1fr; }
+      .scratch-logo-panel { min-height: 250px; border-right: 0; border-bottom: 2px solid var(--green-dark); }
+      .scratch-logo-panel img { width: min(82%, 360px); max-height: 190px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .scratch-link { transition: none; } }
+  </style>
+  <style>
     /* Sponsor cards only; the rest of the page keeps its original styling. */
     .sponsor-section {
       padding: clamp(80px, 9vw, 120px) 0;
@@ -199,6 +305,43 @@
     .sponsor-info h3 { margin: 12px 0; font-family: Georgia, serif; font-size: clamp(23px, 2.2vw, 30px); font-style: italic; line-height: 1.05; }
     .sponsor-info p { margin: 0 0 24px; font-size: 15px; line-height: 1.55; }
     .sponsor-visit { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--green); font-size: 12px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .sponsor-item--coming-soon {
+      min-height: 100%;
+      border-style: dashed;
+      background: var(--mustard);
+      box-shadow: 7px 7px 0 var(--blue);
+    }
+    .sponsor-item--coming-soon:hover {
+      transform: none;
+      box-shadow: 7px 7px 0 var(--blue);
+    }
+    .coming-soon-panel {
+      display: grid;
+      min-height: 210px;
+      place-items: center;
+      padding: 28px;
+      border-bottom: 2px solid var(--green-dark);
+      background: var(--green-dark);
+      color: var(--paper);
+      text-align: center;
+    }
+    .coming-soon-mark {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+    }
+    .coming-soon-mark span:first-child {
+      color: var(--mustard);
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1;
+    }
+    .coming-soon-mark strong {
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 3.5vw, 42px);
+      font-style: italic;
+      line-height: 1;
+    }
+    .sponsor-item--coming-soon .sponsor-category { color: var(--green-dark); }
     @media (max-width: 960px) { .sponsor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 620px) {
       .sponsor-heading { align-items: flex-start; flex-direction: column; }
@@ -459,7 +602,7 @@
         </div>
         <div class="crew-list">
           <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/eric-reynolds.jpg" alt="Crew image for Eric Reynolds" width="495" height="618" loading="lazy"><span class="crew-number">01</span></div><div class="crew-details"><h3>Eric Reynolds</h3><p>Founder &amp; Host</p></div></article>
-          <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/maxwell-kilimczak.jpg" alt="Crew image for Maxwell Kilimczak" width="365" height="547" loading="lazy"><span class="crew-number">02</span></div><div class="crew-details"><h3>Maxwell Klimczak</h3><p>Executive Producer &amp; Host</p></div></article>
+          <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/maxwell-kilimczak.jpg" alt="Crew image for Maxwell Kilimczak" width="365" height="547" loading="lazy"><span class="crew-number">02</span></div><div class="crew-details"><h3>Maxwell Kilimczak</h3><p>Executive Producer &amp; Host</p></div></article>
           <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/john-critter.jpg" alt="Crew image for John aka Critter" width="372" height="537" loading="lazy"><span class="crew-number">03</span></div><div class="crew-details"><h3>John aka “Critter”</h3><p>Co-Host &amp; Production Assistant</p></div></article>
           <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/will-journiette.jpg" alt="Crew image for Will Journiette" width="558" height="549" loading="lazy"><span class="crew-number">04</span></div><div class="crew-details"><h3>Will Journiette</h3><p>1st Cameraman</p></div></article>
           <article class="crew-card"><div class="crew-photo"><img src="assets/images/crew/trey-lewis.jpg" alt="Crew image for Trey Lewis" width="447" height="447" loading="lazy"><span class="crew-number">05</span></div><div class="crew-details"><h3>Trey Lewis</h3><p>Creative Director</p></div></article>
@@ -495,7 +638,7 @@
             <div class="support-copy">
               <span class="kicker">Klean Studios LLC</span>
               <h3>A studio—and a team—behind the show.</h3>
-              <p>Biscuits &amp; Gravy is supported by Klean Studios LLC, utilizing its recording studio and other wonderful amenities. Biscuits &amp; Gravy would not be possible without the help of Maxwell Klimczak and his team at Klean Studios.</p>
+              <p>Biscuits &amp; Gravy is supported by Klean Studios LLC, utilizing its recording studio and other wonderful amenities. Biscuits &amp; Gravy would not be possible without the help of Maxwell Klean and his team at Klean Studios.</p>
             </div>
           </a>
         </div>
@@ -516,6 +659,23 @@
       </div>
     </section>
 
+    <section class="scratch-section" id="scratch-biscuit" aria-labelledby="scratch-heading">
+      <div class="section">
+        <div class="scratch-feature">
+          <div class="scratch-logo-panel">
+            <img src="assets/images/scratch-logo.png" alt="Scratch Biscuit Co." width="500" height="285" loading="lazy">
+          </div>
+          <div class="scratch-copy">
+            <span class="official-sponsor-badge">Official Sponsor of B&amp;G</span>
+            <span class="kicker">Grandin Village · Roanoke, VA</span>
+            <h2 id="scratch-heading">Scratch Biscuit Co.</h2>
+            <p>Down-home, made-from-scratch biscuits and breakfast served fresh in Roanoke's Grandin Village.</p>
+            <a class="scratch-link" href="https://scratchbiscuit.com/" target="_blank" rel="noopener noreferrer">Visit Scratch Biscuit Co. <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="sponsor-section" id="sponsors" aria-labelledby="sponsor-heading">
       <div class="section">
         <div class="sponsor-heading">
@@ -523,10 +683,6 @@
           <p>A big thank-you to the Roanoke-area businesses who help keep the show cooking.</p>
         </div>
         <div class="sponsor-grid">
-          <a class="sponsor-item" href="https://scratchbiscuit.com/" target="_blank" rel="noopener noreferrer">
-            <div class="sponsor-logo"><img src="assets/images/scratch-logo.png" alt="" width="500" height="285" loading="lazy"></div>
-            <div class="sponsor-info"><span class="sponsor-category">Roanoke · Breakfast</span><h3>Scratch Biscuit Co.</h3><p>Down-home, made-from-scratch biscuits and breakfast served fresh in Roanoke's Grandin Village.</p><span class="sponsor-visit">Visit Scratch <span aria-hidden="true">↗</span></span></div>
-          </a>
           <a class="sponsor-item" href="https://www.thespotonkirk.org/about" target="_blank" rel="noopener noreferrer">
             <div class="sponsor-logo sponsor-logo--dark"><img src="assets/images/Kirk%20Logo.png" alt="" width="1000" height="1000" loading="lazy"></div>
             <div class="sponsor-info"><span class="sponsor-category">Roanoke · Live music</span><h3>The Spot on Kirk</h3><p>An intimate downtown music venue bringing local and touring artists together with the community.</p><span class="sponsor-visit">Visit The Spot <span aria-hidden="true">↗</span></span></div>
@@ -547,6 +703,17 @@
             <div class="sponsor-logo sponsor-logo--dark"><img src="assets/images/A%20Few%20Old%20Goats%20Logo_02.png" alt="" width="1920" height="1080" loading="lazy"></div>
             <div class="sponsor-info"><span class="sponsor-category">Virginia · Craft beer</span><h3>A Few Old Goats Brewing</h3><p>A Roanoke-born nano-brewery pouring its own small-batch beers in Roanoke and Buchanan.</p><span class="sponsor-visit">Visit AFOG <span aria-hidden="true">↗</span></span></div>
           </a>
+          <article class="sponsor-item sponsor-item--coming-soon" aria-label="New Biscuits and Gravy sponsor coming soon">
+            <div class="coming-soon-panel">
+              <div class="coming-soon-mark"><span aria-hidden="true">✦</span><strong>Coming Soon</strong></div>
+            </div>
+            <div class="sponsor-info">
+              <span class="sponsor-category">Next at the table</span>
+              <h3>New Sponsor</h3>
+              <p>Another local partner is joining the Biscuits &amp; Gravy family. Check back soon for the announcement.</p>
+              <span class="sponsor-visit">Stay tuned</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
